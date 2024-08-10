@@ -22,9 +22,6 @@ CCPayment allows you send and receive payments in crypto from your friends and f
 - [x] Create native checkout invoice
 - [x] Create external withdrawal
 - [x] Create internal transfer between CWallet user
-- [ ] I'm so bored omagaa
-- [ ] Do u know what?
-- [ ] I dont know tooðŸ˜”
 
 ## Documentation & flow
 - [Usage](#Usage)
@@ -81,8 +78,11 @@ CCPayment allows you send and receive payments in crypto from your friends and f
     - [getTransferRecordList](#12-getTransferRecordList)
 - [Contact](#Contact-me)
 
-## Import this repo into your bot
-![setup](static/setup.jpg)
+## ⚠️ Set this repo to your bot
+![set-repo-url](static/set-repo-url.jpg)
+
+## ⚠️ Import this lib repo into your bot
+![import-from-repo](static/import-from-repo.jpg)
  
 ## Usage
 
