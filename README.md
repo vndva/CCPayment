@@ -78,10 +78,10 @@ CCPayment allows you send and receive payments in crypto from your friends and f
     - [getTransferRecordList](#12-getTransferRecordList)
 - [Contact](#Contact-me)
 
-## ⚠️ Set this repo to your bot
+## Set this repo to your bot
 ![set-repo-url](static/set-repo-url.jpg)
 
-## ⚠️ Import this lib repo into your bot
+## Import the lib into your bot
 ![import-from-repo](static/import-from-repo.jpg)
  
 ## Usage
