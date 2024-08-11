@@ -138,6 +138,19 @@ Official documentation: https://ccpayment.com/payment-doc-v1/
 ### Payment API
 
 #### 1. createHostedInvoice
+
+_Reference: **[Hosted checkout page integration](https://doc.ccpayment.com/ccpayment-v1.0-api/payment-api-ccpayment/hosted-checkout-page-integration)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`product_name`|Yes|`string`|
+|`product_price`|Yes|`string`|
+|`merchant_order_id`|Yes|`string`|
+|`order_valid_period`|No|`integer`|
+|`return_url`|No|`string`|
+|`notify_url`|No|`string`|
+|`custom_value`|No|`string`|
+
 ```js
 payment.createHostedInvoice({
     body: {
@@ -155,6 +168,20 @@ payment.createHostedInvoice({
 [Back](#documentation--flow)
 
 #### 2. createNativeInvoice
+
+_Reference: **[Native checkout integration](https://doc.ccpayment.com/ccpayment-v1.0-api/payment-api-ccpayment/native-checkout-integration)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`token_id`|Yes|`string`|
+|`product_price`|Yes|`string`|
+|`merchant_order_id`|Yes|`string`|
+|`denominated_currency`|Yes|`string`|
+|`remark`|No|`string`|
+|`order_valid_period`|No|`integer`|
+|`notify_url`|No|`string`|
+|`custom_value`|No|`string`|
+
 ```js
 payment.createNativeInvoice({
     body: {
@@ -173,6 +200,13 @@ payment.createNativeInvoice({
 [Back](#documentation--flow)
 
 #### 3. getInvoiceDetail
+
+_Reference: **[Deposit order information](https://doc.ccpayment.com/ccpayment-v1.0-api/payment-api-ccpayment/api-deposit-order-information-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`merchant_order_ids`|Yes|`string[]`|
+
 ```js
 payment.getInvoiceDetail({
     body: {
@@ -186,6 +220,15 @@ payment.getInvoiceDetail({
 ### Wallet API
 
 #### 1. createPermanentAddress
+
+_Reference: **[Get permanent deposit address](https://doc.ccpayment.com/ccpayment-v1.0-api/wallet-api-ccpayment/get-permanent-deposit-address-for-users)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`user_id`|Yes|`string`|
+|`chain`|Yes|`string`|
+|`notify_url`|No|`string`|
+
 ```js
 wallet.createPermanentAddress({
     body: {
@@ -201,6 +244,18 @@ wallet.createPermanentAddress({
 ### Withdrawal API
 
 #### 1. createWithdrawal
+
+_Reference: **[Create a withdrawal order](https://doc.ccpayment.com/ccpayment-v1.0-api/withdrawal-api-integration/create-a-withdrawal-order)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`merchant_order_id`|Yes|`string`|
+|`address`|Yes|`string`|
+|`token_id`|Yes|`string`|
+|`value`|Yes|`string`|
+|`memo`|No|`string`|
+|`merchant_pays_fee`|No|`boolean`|
+
 ```js
 withdrawal.createWithdrawal ({
     body: {
@@ -217,6 +272,13 @@ withdrawal.createWithdrawal ({
 [Back](#documentation--flow)
 
 #### 2. getWithdrawalDetail
+
+_Reference: **[Withdrawal order information](https://doc.ccpayment.com/ccpayment-v1.0-api/withdrawal-api-integration/withdrawal-order-information-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`merchant_order_ids`|Yes|`string[]`|
+
 ```js
 withdrawal.getWithdrawalDetail({
     body: {
@@ -230,6 +292,13 @@ withdrawal.getWithdrawalDetail({
 ### Resources API
 
 #### 1. getSupportedCoins
+
+_Reference: **[Token ID interface](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/token-id-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|No parameter required|
+
 ```js
 resources.getSupportedCoins({
     // no parameter required
@@ -239,6 +308,14 @@ resources.getSupportedCoins({
 [Back](#documentation--flow)
 
 #### 2. calculateTokenRate
+
+_Reference: **[Current token rate interface](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/current-token-rate-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`amount`|Yes|`string`|
+|`token_id`|Yes|`string`|
+
 ```js
 resources.calculateTokenRate({
     body: {
@@ -251,6 +328,13 @@ resources.calculateTokenRate({
 [Back](#documentation--flow)
 
 #### 3. getBalance
+
+_Reference: **[Asset balance interface](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/asset-balance-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coin_id`|No|`string`|
+
 ```js
 resources.getBalance({
     body: {
@@ -262,6 +346,14 @@ resources.getBalance({
 [Back](#documentation--flow)
 
 #### 4. getNetworkFee
+
+_Reference: **[Network fee interface](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/network-fee-interface)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`token_id`|No|`string`|
+|`address`|No|`string`|
+
 ```js
 resources.getNetworkFee({
     body: {
@@ -274,6 +366,13 @@ resources.getNetworkFee({
 [Back](#documentation--flow)
 
 #### 5. getBlockHeight
+
+_Reference: **[Block height information retrieval](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/block-height-information-retrieval-api)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|No parameter required|
+
 ```js
 resources.getBlockHeight({
     // no parameter required
@@ -283,6 +382,13 @@ resources.getBlockHeight({
 [Back](#documentation--flow)
 
 #### 6. validateCWalletId
+
+_Reference: **[Check CWallet validity](https://doc.ccpayment.com/ccpayment-v1.0-api/resources-document/check-the-validity-of-cwallet-id)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`c_id`|Yes|`string`|
+
 ```js
 resources.validateCWalletId({
     body: {
@@ -299,6 +405,7 @@ Official documentation: https://ccpayment.com/api/doc?en#introduction
 ### Common API
 
 #### 1. getTokenList
+
 ```js
 common.getTokenList({
     // no parameter required
@@ -308,6 +415,7 @@ common.getTokenList({
 [Back](#documentation--flow)
 
 #### 2. getTokenInformation
+
 ```js
 common.getTokenInformation({
     body: {
@@ -319,6 +427,7 @@ common.getTokenInformation({
 [Back](#documentation--flow)
 
 #### 3. getTokenPrice
+
 ```js
 common.getTokenPrice({
     body: {
@@ -330,6 +439,9 @@ common.getTokenPrice({
 [Back](#documentation--flow)
 
 #### 4. getCWalletUserInfo
+
+_Reference: **[]()**_
+
 ```js
 common.getCWalletUserInfo({
     body: {
@@ -341,6 +453,7 @@ common.getCWalletUserInfo({
 [Back](#documentation--flow)
 
 #### 5. getWithdrawFee
+
 ```js
 common.getWithdrawFee({
     body: {
@@ -353,6 +466,7 @@ common.getWithdrawFee({
 [Back](#documentation--flow)
 
 #### 6. getFiatList
+
 ```js
 common.getFiatList({
     // no parameter required
@@ -362,6 +476,7 @@ common.getFiatList({
 [Back](#documentation--flow)
 
 #### 7. getChainList
+
 ```js
 common.getChainList({
     body: {
@@ -375,6 +490,7 @@ common.getChainList({
 ### Merchant API
 
 #### 1. getBalanceList
+
 ```js
 merchant.getBalanceList({
     // no parameter required
@@ -384,6 +500,7 @@ merchant.getBalanceList({
 [Back](#documentation--flow)
 
 #### 2. getCoinBalance
+
 ```js
 merchant.getCoinBalance({
     body: {
@@ -395,6 +512,7 @@ merchant.getCoinBalance({
 [Back](#documentation--flow)
 
 #### 3. createInvoice
+
 ```js
 merchant.createInvoice({
     body: {
@@ -415,6 +533,7 @@ merchant.createInvoice({
 [Back](#documentation--flow)
 
 #### 4. getInvoiceDetail
+
 ```js
 merchant.getInvoiceDetail({
     body: {
@@ -426,6 +545,7 @@ merchant.getInvoiceDetail({
 [Back](#documentation--flow)
 
 #### 5. createPermanentAddress
+
 ```js
 merchant.createPermanentAddress({
     body: {
@@ -438,6 +558,7 @@ merchant.createPermanentAddress({
 [Back](#documentation--flow)
 
 #### 6. getDepositRecord
+
 ```js
 merchant.getDepositRecord({
     body: {
@@ -449,6 +570,7 @@ merchant.getDepositRecord({
 [Back](#documentation--flow)
 
 #### 7. getDepositRecordList
+
 ```js
 merchant.getDepositRecordList({
     body: {
@@ -466,6 +588,7 @@ merchant.getDepositRecordList({
 [Back](#documentation--flow)
 
 #### 8. externalWithdraw
+
 ```js
 merchant.externalWithdraw({
     body: {
@@ -483,6 +606,7 @@ merchant.externalWithdraw({
 [Back](#documentation--flow)
 
 #### 9. internalWithdraw
+
 ```js
 merchant.internalWithdraw({
     body: {
@@ -497,6 +621,7 @@ merchant.internalWithdraw({
 [Back](#documentation--flow)
 
 #### 10. getWithdrawalRecord
+
 ```js
 merchant.getWithdrawalRecord({
     body: {
@@ -509,6 +634,7 @@ merchant.getWithdrawalRecord({
 [Back](#documentation--flow)
 
 #### 11. getWithdrawalRecordList
+
 ```js
 merchant.getWithdrawalRecordList({
     body: {
@@ -525,6 +651,7 @@ merchant.getWithdrawalRecordList({
 [Back](#documentation--flow)
 
 #### 12. getSwapQuote
+
 ```js
 merchant.getSwapQuote({
     body: {
@@ -538,6 +665,7 @@ merchant.getSwapQuote({
 [Back](#documentation--flow)
 
 #### 13. createSwapOrder
+
 ```js
 merchant.createSwapOrder({
     body: {
@@ -553,6 +681,7 @@ merchant.createSwapOrder({
 [Back](#documentation--flow)
 
 #### 14. getSwapRecord
+
 ```js
 merchant.getSwapRecord({
     body: {
@@ -565,6 +694,7 @@ merchant.getSwapRecord({
 [Back](#documentation--flow)
 
 #### 15. getSwapRecordList
+
 ```js
 merchant.getSwapRecordList({
     body: {
@@ -584,6 +714,7 @@ merchant.getSwapRecordList({
 ### Wallet system API
 
 #### 1. getUserBalanceList
+
 ```js
 walletSystem.getUserBalanceList({
     body: {
@@ -595,6 +726,7 @@ walletSystem.getUserBalanceList({
 [Back](#documentation--flow)
 
 #### 2. getUserBalance
+
 ```js
 walletSystem.getUserBalance({
     body: {
@@ -607,6 +739,7 @@ walletSystem.getUserBalance({
 [Back](#documentation--flow)
 
 #### 3. getUserDepositAddress
+
 ```js
 walletSystem.getUserDepositAddress({
     body: {
@@ -619,6 +752,7 @@ walletSystem.getUserDepositAddress({
 [Back](#documentation--flow)
 
 #### 4. getUserDepositRecord
+
 ```js
 walletSystem.getUserDepositRecord({
     body: {
@@ -630,6 +764,7 @@ walletSystem.getUserDepositRecord({
 [Back](#documentation--flow)
 
 #### 5. getUserDepositRecordList
+
 ```js
 walletSystem.getUserDepositRecordList({
     body: {
@@ -646,6 +781,7 @@ walletSystem.getUserDepositRecordList({
 [Back](#documentation--flow)
 
 #### 6. externalUserWithdraw
+
 ```js
 walletSystem.externalUserWithdraw({
     body: {
@@ -663,6 +799,7 @@ walletSystem.externalUserWithdraw({
 [Back](#documentation--flow)
 
 #### 7. internalUserWithdraw
+
 ```js
 walletSystem.internalUserWithdraw({
     body: {
@@ -678,6 +815,7 @@ walletSystem.internalUserWithdraw({
 [Back](#documentation--flow)
 
 #### 8. getUserWithdrawalRecord
+
 ```js
 walletSystem.getUserWithdrawalRecord({
     body: {
@@ -690,6 +828,7 @@ walletSystem.getUserWithdrawalRecord({
 [Back](#documentation--flow)
 
 #### 9. getUserWithdrawalRecordList
+
 ```js
 walletSystem.getUserWithdrawalRecordList({
     body: {
@@ -707,6 +846,7 @@ walletSystem.getUserWithdrawalRecordList({
 [Back](#documentation--flow)
 
 #### 10. internalUserTransfer
+
 ```js
 walletSystem.internalUserTransfer({
     body: {
@@ -723,6 +863,7 @@ walletSystem.internalUserTransfer({
 [Back](#documentation--flow)
 
 #### 11. getUserTransferRecord
+
 ```js
 walletSystem.getUserTransferRecord({
     body: {
@@ -735,6 +876,7 @@ walletSystem.getUserTransferRecord({
 [Back](#documentation--flow)
 
 #### 12. getUserTransferRecordList
+
 ```js
 walletSystem.getUserTransferRecordList({
     body: {
@@ -751,6 +893,7 @@ walletSystem.getUserTransferRecordList({
 [Back](#documentation--flow)
 
 #### 13. createUserSwapOrder
+
 ```js
 walletSystem.createUserSwapOrder({
     body: {
@@ -768,6 +911,7 @@ walletSystem.createUserSwapOrder({
 [Back](#documentation--flow)
 
 #### 14. getUserSwapRecord
+
 ```js
 walletSystem.getUserSwapRecord({
     body: {
@@ -780,6 +924,7 @@ walletSystem.getUserSwapRecord({
 [Back](#documentation--flow)
 
 #### 15. getUserSwapRecordList
+
 ```js
 walletSystem.getUserSwapRecordList({
     body: {
