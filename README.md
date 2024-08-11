@@ -22,6 +22,9 @@ CCPayment allows you send and receive payments in crypto from your friends and f
 - [x] Create native checkout invoice
 - [x] Create external withdrawal
 - [x] Create internal transfer between CWallet user
+- [x] Create swap order
+- [x] Get swap quote
+- [x] Get swap record
 
 ## Documentation & flow
 - [Usage](#Usage)
@@ -63,26 +66,35 @@ CCPayment allows you send and receive payments in crypto from your friends and f
     - [internalWithdraw](#9-internalWithdraw)
     - [getWithdrawalRecord](#10-getWithdrawalRecord)
     - [getWithdrawalRecordList](#11-getWithdrawalRecordList)
+    - [getSwapQuote](#12-getSwapQuote)
+    - [createSwapOrder](#13-createSwapOrder)
+    - [getSwapRecord](#14-getSwapRecord)
+    - [getSwapRecordList](#15-getSwapRecordList)
   - [Wallet system](#Wallet-system-API)
     - [getUserBalanceList](#1-getUserBalanceList)
     - [getUserBalance](#2-getUserBalance)
     - [getUserDepositAddress](#3-getUserDepositAddress)
     - [getUserDepositRecord](#4-getUserDepositRecord)
     - [getUserDepositRecordList](#5-getUserDepositRecordList)
-    - [externalWithdraw](#6-externalWithdraw)
-    - [internalWithdraw](#7-internalWithdraw)
-    - [getWithdrawalRecord](#8-getWithdrawalRecord)
-    - [getWithdrawalRecordList](#9-getWithdrawalRecordList)
-    - [internalTransfer](#10-internalTransfer)
-    - [getTransferRecord](#11-getTransferRecord)
-    - [getTransferRecordList](#12-getTransferRecordList)
+    - [externalUserWithdraw](#6-externalWithdraw)
+    - [internalUserWithdraw](#7-internalWithdraw)
+    - [getUserWithdrawalRecord](#8-getWithdrawalRecord)
+    - [getUserWithdrawalRecordList](#9-getWithdrawalRecordList)
+    - [internalUserTransfer](#10-internalTransfer)
+    - [getUserTransferRecord](#11-getTransferRecord)
+    - [getUserTransferRecordList](#12-getTransferRecordList)
+    - [createUserSwapOrder](#13-createUserSwapOrder)
+    - [getUserSwapRecord](#14-getUserSwapRecord)
+    - [getUserSwapRecordList](#15-getUserSwapRecordList)
 - [Contact](#Contact-me)
 
-## Set this repo to your bot
+## Set this repo to your bot 
 ![set-repo-url](static/set-repo-url.jpg)
+[Back](#documentation--flow)
 
 ## Import the lib into your bot
 ![import-from-repo](static/import-from-repo.jpg)
+[Back](#documentation--flow)
  
 ## Usage
 
@@ -106,6 +118,7 @@ Libs.CCPayment.setAppSecret();
 Libs.CCPayment.v1.classes.someMethod();
 Libs.CCPayment.v2.classes.someMethod();
 ```
+[Back](#documentation--flow)
 
 ### Setup
 ```js
@@ -117,6 +130,7 @@ Libs.CCPayment.setAppSecret("abcdef01234567901");
 
 Bot.sendMessage("CCPayment: setup success.");
 ```
+[Back](#documentation--flow)
 
 ## Version 1 API
 Official documentation: https://ccpayment.com/payment-doc-v1/
@@ -138,6 +152,7 @@ payment.createHostedInvoice({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. createNativeInvoice
 ```js
@@ -155,6 +170,7 @@ payment.createNativeInvoice({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 3. getInvoiceDetail
 ```js
@@ -165,6 +181,7 @@ payment.getInvoiceDetail({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 ### Wallet API
 
@@ -179,6 +196,7 @@ wallet.createPermanentAddress({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 ### Withdrawal API
 
@@ -196,6 +214,7 @@ withdrawal.createWithdrawal ({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. getWithdrawalDetail
 ```js
@@ -206,6 +225,7 @@ withdrawal.getWithdrawalDetail({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 ### Resources API
 
@@ -216,6 +236,7 @@ resources.getSupportedCoins({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. calculateTokenRate
 ```js
@@ -227,45 +248,50 @@ resources.calculateTokenRate({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 3. getBalance
 ```js
 resources.getBalance({
-Â    body: {
+    body: {
       // coin_id: "8e5741cf-6e51-4892-9d04-3d40e1dd0128"
     },
-Â Â Â  onSuccess: "some_on_success_cmd"
+    onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 4. getNetworkFee
 ```js
 resources.getNetworkFee({
-Â    body: {
+    body: {
       token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298",
       // address: "0xSomeWalletAddress"
     },
-Â Â Â  onSuccess: "some_on_success_cmd"
+    onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 5. getBlockHeight
 ```js
 resources.getBlockHeight({
-Â    // no parameter required
-Â Â Â  onSuccess: "some_on_success_cmd"
+    // no parameter required
+    onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 6. validateCWalletId
 ```js
 resources.validateCWalletId({
-Â    body: {
+    body: {
       c_id: "9454818"
     },
-Â Â Â  onSuccess: "some_on_success_cmd"
+    onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 ## Version 2 API
 Official documentation: https://ccpayment.com/api/doc?en#introduction
@@ -279,6 +305,7 @@ common.getTokenList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. getTokenInformation
 ```js
@@ -289,6 +316,7 @@ common.getTokenInformation({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 3. getTokenPrice
 ```js
@@ -299,6 +327,7 @@ common.getTokenPrice({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 4. getCWalletUserInfo
 ```js
@@ -309,6 +338,7 @@ common.getCWalletUserInfo({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 5. getWithdrawFee
 ```js
@@ -320,6 +350,7 @@ common.getWithdrawFee({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 6. getFiatList
 ```js
@@ -328,6 +359,7 @@ common.getFiatList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 7. getChainList
 ```js
@@ -338,6 +370,7 @@ common.getChainList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 ### Merchant API
 
@@ -348,6 +381,7 @@ merchant.getBalanceList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. getCoinBalance
 ```js
@@ -358,6 +392,7 @@ merchant.getCoinBalance({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 3. createInvoice
 ```js
@@ -377,6 +412,7 @@ merchant.createInvoice({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 4. getInvoiceDetail
 ```js
@@ -387,6 +423,7 @@ merchant.getInvoiceDetail({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 5. createPermanentAddress
 ```js
@@ -398,6 +435,7 @@ merchant.createPermanentAddress({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 6. getDepositRecord
 ```js
@@ -408,6 +446,7 @@ merchant.getDepositRecord({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 7. getDepositRecordList
 ```js
@@ -424,6 +463,7 @@ merchant.getDepositRecordList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 8. externalWithdraw
 ```js
@@ -440,6 +480,7 @@ merchant.externalWithdraw({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 9. internalWithdraw
 ```js
@@ -453,6 +494,7 @@ merchant.internalWithdraw({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 10. getWithdrawalRecord
 ```js
@@ -464,6 +506,7 @@ merchant.getWithdrawalRecord({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 11. getWithdrawalRecordList
 ```js
@@ -479,6 +522,64 @@ merchant.getWithdrawalRecordList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
+
+#### 12. getSwapQuote
+```js
+merchant.getSwapQuote({
+    body: {
+      coinIdIn: 1280,
+      amountIn: "100",
+      coinIdOut: 1329
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
+
+#### 13. createSwapOrder
+```js
+merchant.createSwapOrder({
+    body: {
+      orderId: "some_order_id_123",
+      coinIdIn: 1280,
+      amountIn: "100",
+      coinIdOut: 1329,
+      // amountOutMinimum: ""
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
+
+#### 14. getSwapRecord
+```js
+merchant.getSwapRecord({
+    body: {
+      // recordId: "some_record_id_123",
+      // orderId: "some_order_id_123"
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
+
+#### 15. getSwapRecordList
+```js
+merchant.getSwapRecordList({
+    body: {
+      // recordIds: ["some_record_id_123", ["some_record_id_456"],
+      // orderIds: ["some_order_id_123", "some_order_id_456"],
+      // coinIdIn: 1280,
+      // coinIdOut: 1329,
+      // startAt: 1721297348,
+      // endAt: 1721300968,
+      // nextId: "some_next_id"
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
 
 ### Wallet system API
 
@@ -491,6 +592,7 @@ walletSystem.getUserBalanceList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 2. getUserBalance
 ```js
@@ -502,6 +604,7 @@ walletSystem.getUserBalance({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 3. getUserDepositAddress
 ```js
@@ -513,6 +616,7 @@ walletSystem.getUserDepositAddress({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 4. getUserDepositRecord
 ```js
@@ -523,6 +627,7 @@ walletSystem.getUserDepositRecord({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
 #### 5. getUserDepositRecordList
 ```js
@@ -538,10 +643,11 @@ walletSystem.getUserDepositRecordList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 6. externalWithdraw
+#### 6. externalUserWithdraw
 ```js
-walletSystem.externalWithdraw({
+walletSystem.externalUserWithdraw({
     body: {
       coinId: 1280,
       userId: "user_id_123",
@@ -554,10 +660,11 @@ walletSystem.externalWithdraw({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 7. internalWithdraw
+#### 7. internalUserWithdraw
 ```js
-walletSystem.internalWithdraw({
+walletSystem.internalUserWithdraw({
     body: {
       coinId: 1280,
       userId: "user_id_123",
@@ -568,10 +675,11 @@ walletSystem.internalWithdraw({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 8. getWithdrawalRecord
+#### 8. getUserWithdrawalRecord
 ```js
-walletSystem.getWithdrawalRecord({
+walletSystem.getUserWithdrawalRecord({
     body: {
       // recordId: "some_record_id_123",
       // orderId: "some_order_id_123"
@@ -579,10 +687,11 @@ walletSystem.getWithdrawalRecord({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 9. getWithdrawalRecordList
+#### 9. getUserWithdrawalRecordList
 ```js
-walletSystem.getWithdrawalRecordList({
+walletSystem.getUserWithdrawalRecordList({
     body: {
       userId: "user_id_123",
       // coinId: 1280,
@@ -595,10 +704,11 @@ walletSystem.getWithdrawalRecordList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 10. internalTransfer
+#### 10. internalUserTransfer
 ```js
-walletSystem.internalTransfer({
+walletSystem.internalUserTransfer({
     body: {
       fromUserId: "user_id_123",
       toUserId: "user_id_456",
@@ -610,10 +720,11 @@ walletSystem.internalTransfer({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 11. getTransferRecord
+#### 11. getUserTransferRecord
 ```js
-walletSystem.getTransferRecord({
+walletSystem.getUserTransferRecord({
     body: {
       // recordId: "record_id_123",
       // orderId: "order_id_123"
@@ -621,10 +732,11 @@ walletSystem.getTransferRecord({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
 
-#### 12. getTransferRecordList
+#### 12. getUserTransferRecordList
 ```js
-walletSystem.getTransferRecordList({
+walletSystem.getUserTransferRecordList({
     body: {
       fromUserId: "user_id_123",
       toUserId: "user_id_456",
@@ -636,6 +748,54 @@ walletSystem.getTransferRecordList({
     onSuccess: "some_on_success_cmd"
 });
 ```
+[Back](#documentation--flow)
+
+#### 13. createUserSwapOrder
+```js
+walletSystem.createUserSwapOrder({
+    body: {
+      orderId: "some_order_id_123",
+      userId: "user_id_123",
+      coinIdIn: 1280,
+      amountIn: "100",
+      coinIdOut: 1329,
+      // extraFeeRate: "",
+      // amountOutMinimum: ""
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
+
+#### 14. getUserSwapRecord
+```js
+walletSystem.getUserSwapRecord({
+    body: {
+      // recordId: "some_record_id_123",
+      // orderId: "some_order_id_123"
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
+
+#### 15. getUserSwapRecordList
+```js
+walletSystem.getUserSwapRecordList({
+    body: {
+      // recordIds: ["some_record_id_123", ["some_record_id_456"],
+      // orderIds: ["some_order_id_123", "some_order_id_456"],
+      // userId: "some_user_id_123",
+      // coinIdIn: 1280,
+      // coinIdOut: 1329,
+      // startAt: 1721297348,
+      // endAt: 1721300968,
+      // nextId: "some_next_id"
+    },
+    onSuccess: "some_on_success_cmd"
+});
+```
+[Back](#documentation--flow)
 
 ## Contact me
 You can contact me at [@mslylia](https://t.me/mslylia) on Telegram for any related questions.
