@@ -100,6 +100,12 @@ class V1Api {
 
         apiCall(options);
     }
+
+    callPost(path, options, requiredParams) {
+        options.path = path;
+        validateParams(options, requiredParams);
+        this._post(options);
+    }
 }
 
 class V1PaymentAPI {
@@ -114,9 +120,7 @@ class V1PaymentAPI {
     }
 
     createNativeInvoice(options) {
-        options.path = "bill/create";
-        validateParams(options, ["product_price", "merchant_order_id", "token_id", "denominated_currency"]);
-        this.apiInstance._post(options);
+        this.apiInstance.callPost("bill/create", options, ["product_price", "merchant_order_id", "token_id", "denominated_currency"]);
     }
 
     getInvoiceDetail(options) {
@@ -224,6 +228,12 @@ class V2Api {
         options.headers["Sign"] = signature;
 
         apiCall(options);
+    }
+
+    callPost(path, options, requiredParams) {
+        options.path = path;
+        validateParams(options, requiredParams);
+        this._post(options);
     }
 }
 
