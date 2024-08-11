@@ -51,7 +51,7 @@ function apiCall(options) {
     }
 
     HTTP[options.method]({
-        url: options.url + options.path,
+        url: options.url,
         headers: options.headers,
         body: options.body,
         success: libPrefix + "onApiResponse " + options.onSuccess,
@@ -91,7 +91,7 @@ class V1Api {
         const timestamp = createTimestamp();
         const signature = this._SHA256(appId + appSecret + timestamp + options.body);
 
-        options.url = this.baseUrl;
+        options.url = String(this.baseUrl + options.path);
         options.method = "post";
         options.headers = {};
         options.headers["Appid"] = appId;
@@ -216,7 +216,7 @@ class V2Api {
         const timestamp = createTimestamp();
         const signature = this._hmacSHA256(String(appId + timestamp + options.body), appSecret);
 
-        options.url = this.baseUrl;
+        options.url = String(this.baseUrl + options.path);
         options.method = "post";
         options.headers = {};
         options.headers["Appid"] = appId;
