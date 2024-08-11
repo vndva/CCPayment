@@ -5,7 +5,6 @@ function setAppId(appId) {
     if (!appId) {
         throw libName + ": 'setAppId' require appId for setup";
     }
-
     Bot.setProperty(libPrefix + "appid", appId, "string");
 }
 
@@ -13,7 +12,6 @@ function setAppSecret(appSecret) {
     if (!appSecret) {
         throw libName + ": 'setAppSecret' require appSecret for setup";
     }
-
     Bot.setProperty(libPrefix + "appsecret", appSecret, "string");
 }
 
@@ -110,20 +108,20 @@ class V1PaymentAPI {
     }
 
     createHostedInvoice(options) {
-        validateParams(options, ["product_price", "merchant_order_id", "product_name"]);
         options.path = "concise/url/get";
+        validateParams(options, ["product_price", "merchant_order_id", "product_name"]);
         this.apiInstance._post(options);
     }
 
     createNativeInvoice(options) {
-        validateParams(options, ["product_price", "merchant_order_id", "token_id", "denominated_currency"]);
         options.path = "bill/create";
+        validateParams(options, ["product_price", "merchant_order_id", "token_id", "denominated_currency"]);
         this.apiInstance._post(options);
     }
 
     getInvoiceDetail(options) {
-        validateParams(options, ["merchant_order_id"]);
         options.path = "bill/info";
+        validateParams(options, ["merchant_order_id"]);
         this.apiInstance._post(options);
     }
 }
@@ -134,8 +132,8 @@ class V1WalletAPI {
     }
 
     createPermanentAddress(options) {
-        validateParams(options, ["user_id", "chain"]);
         options.path = "payment/address/get";
+        validateParams(options, ["user_id", "chain"]);
         this.apiInstance._post(options);
     }
 }
@@ -146,14 +144,14 @@ class V1WithdrawalAPI {
     }
 
     createWithdrawal(options) {
-        validateParams(options, ["merchant_order_id", "address", "token_id", "value"]);
         options.path = "withdrawal";
+        validateParams(options, ["merchant_order_id", "address", "token_id", "value"]);
         this.apiInstance._post(options);
     }
 
     getWithdrawalDetail(options) {
-        validateParams(options, ["merchant_order_ids"]);
         options.path = "bill/info";
+        validateParams(options, ["merchant_order_ids"]);
         this.apiInstance._post(options);
     }
 }
@@ -169,8 +167,8 @@ class V1ResourcesAPI {
     }
 
     calculateTokenRate(options) {
-        validateParams(options, ["amount", "token_id"]);
         options.path = "token/rate";
+        validateParams(options, ["amount", "token_id"]);
         this.apiInstance._post(options);
     }
 
@@ -180,8 +178,8 @@ class V1ResourcesAPI {
     }
 
     getNetworkFee(options) {
-        validateParams(options, ["token_id"]);
         options.path = "network/fee";
+        validateParams(options, ["token_id"]);
         this.apiInstance._post(options);
     }
 
@@ -191,8 +189,8 @@ class V1ResourcesAPI {
     }
 
     validateCWalletId(options) {
-        validateParams(options, ["c_id"]);
         options.path = "check/user";
+        validateParams(options, ["c_id"]);
         this.apiInstance._post(options);
     }
 }
@@ -212,7 +210,7 @@ class V2Api {
 
     _post(options) {
         options.body = JSON.stringify(options.body) || "";
-
+        
         const appId = getAppId();
         const appSecret = getAppSecret();
         const timestamp = createTimestamp();
@@ -240,26 +238,26 @@ class V2CommonAPI {
     }
 
     getTokenInformation(options) {
-        validateParams(options, ["coinId"]);
         options.path = "getCoin";
+        validateParams(options, ["coinId"]);
         this.apiInstance._post(options);
     }
 
     getTokenPrice(options) {
-        validateParams(options, ["coinIds"]);
         options.path = "getCoinUSDTPrice";
+        validateParams(options, ["coinIds"]);
         this.apiInstance._post(options);
     }
 
     getCWalletUserInfo(options) {
-        validateParams(options, ["cwalletUserId"]);
         options.path = "getCwalletUserId";
+        validateParams(options, ["cwalletUserId"]);
         this.apiInstance._post(options);
     }
 
     getWithdrawFee(options) {
-        validateParams(options, ["coinId", "chain"]);
         options.path = "getWithdrawFee";
+        validateParams(options, ["coinId", "chain"]);
         this.apiInstance._post(options);
     }
 
@@ -285,32 +283,32 @@ class V2MerchantAPI {
     }
 
     getCoinBalance(options) {
-        validateParams(options, ["coinId"]);
         options.path = "getAppCoinAsset";
+        validateParams(options, ["coinId"]);
         this.apiInstance._post(options);
     }
 
     createInvoice(options) {
-        validateParams(options, ["coinId", "price", "chain", "orderId"]);
         options.path = "createAppOrderDepositAddress";
+        validateParams(options, ["coinId", "price", "chain", "orderId"]);
         this.apiInstance._post(options);
     }
 
     getInvoiceDetail(options) {
-        validateParams(options, ["orderId"]);
         options.path = "getAppOrderInfo";
+        validateParams(options, ["orderId"]);
         this.apiInstance._post(options);
     }
 
     createPermanentAddress(options) {
-        validateParams(options, ["referenceId", "chain"]);
         options.path = "getOrCreateAppDepositAddress";
+        validateParams(options, ["referenceId", "chain"]);
         this.apiInstance._post(options);
     }
 
     getDepositRecord(options) {
-        validateParams(options, ["recordId"]);
         options.path = "getAppDepositRecord";
+        validateParams(options, ["recordId"]);
         this.apiInstance._post(options);
     }
 
@@ -320,14 +318,14 @@ class V2MerchantAPI {
     }
 
     externalWithdraw(options) {
-        validateParams(options, ["coinId", "chain", "address", "orderId", "amount"]);
         options.path = "applyAppWithdrawToNetwork";
+        validateParams(options, ["coinId", "chain", "address", "orderId", "amount"]);
         this.apiInstance._post(options);
     }
 
     internalWithdraw(options) {
-        validateParams(options, ["coinId", "cwalletUser", "orderId", "amount"]);
         options.path = "applyAppWithdrawToCwallet";
+        validateParams(options, ["coinId", "cwalletUser", "orderId", "amount"]);
         this.apiInstance._post(options);
     }
 
@@ -340,6 +338,28 @@ class V2MerchantAPI {
         options.path = "getAppWithdrawRecordList";
         this.apiInstance._post(options);
     }
+    
+    getSwapQuote(options) {
+        options.path = "estimate";
+        validateParams(options, ["coinIdIn", "amountIn", "coinIdOut"]);
+        this.apiInstance._post(options);
+    }
+    
+    createSwapOrder(options) {
+        options.path = "swap";
+        validateParams(options, ["orderId", "coinIdIn", "amountIn", "coinIdOut"]);
+        this.apiInstance._post(options);
+    }
+    
+    getSwapRecord(options) {
+        options.path = "getSwapRecord";
+        this.apiInstance._post(options);
+    }
+    
+    getSwapRecordList(options) {
+        options.path = "getSwapRecordList";
+        this.apiInstance._post(options);
+    }
 }
 
 class V2WalletSystemAPI {
@@ -348,72 +368,89 @@ class V2WalletSystemAPI {
     }
 
     getUserBalanceList(options) {
-        validateParams(options, ["userId"]);
         options.path = "getUserCoinAssetList";
+        validateParams(options, ["userId"]);
         this.apiInstance._post(options);
     }
 
     getUserBalance(options) {
-        validateParams(options, ["userId", "coinId"]);
         options.path = "getUserCoinAsset";
+        validateParams(options, ["userId", "coinId"]);
         this.apiInstance._post(options);
     }
 
     getUserDepositAddress(options) {
-        validateParams(options, ["userId", "chain"]);
         options.path = "getOrCreateUserDepositAddress";
+        validateParams(options, ["userId", "chain"]);
         this.apiInstance._post(options);
     }
 
     getUserDepositRecord(options) {
-        validateParams(options, ["recordId"]);
         options.path = "getUserDepositRecord";
+        validateParams(options, ["recordId"]);
         this.apiInstance._post(options);
     }
 
     getUserDepositRecordList(options) {
-        validateParams(options, ["userId"]);
         options.path = "getUserDepositRecordList";
+        validateParams(options, ["userId"]);
         this.apiInstance._post(options);
     }
 
-    externalWithdraw(options) {
-        validateParams(options, ["userId", "coinId", "chain", "address", "orderId", "amount"]);
+    externalUserWithdraw(options) {
         options.path = "applyUserWithdrawToNetwork";
+        validateParams(options, ["userId", "coinId", "chain", "address", "orderId", "amount"]);
         this.apiInstance._post(options);
     }
 
-    internalWithdraw(options) {
-        validateParams(options, ["userId", "coinId", "cwalletUser", "orderId", "amount"]);
+    internalUserWithdraw(options) {
         options.path = "applyUserWithdrawToCwallet";
+        validateParams(options, ["userId", "coinId", "cwalletUser", "orderId", "amount"]);
         this.apiInstance._post(options);
     }
 
-    getWithdrawalRecord(options) {
+    getUserWithdrawalRecord(options) {
         options.path = "getUserWithdrawRecord";
         this.apiInstance._post(options);
     }
 
-    getWithdrawalRecordList(options) {
-        validateParams(options, ["userId"]);
+    getUserWithdrawalRecordList(options) {
         options.path = "getUserWithdrawRecordList";
+        validateParams(options, ["userId"]);
         this.apiInstance._post(options);
     }
 
-    internalTransfer(options) {
+    internalUserTransfer(options) {
         options.path = "userTransfer";
+        validateParams(options, ["fromUserId", "toUserId", "coinId", "amount", "orderId"]);
         this.apiInstance._post(options);
     }
 
-    getTransferRecord(options) {
-        validateParams(options, ["fromUserId", "toUserId", "coinId", "orderId", "amount"]);
+    getUserTransferRecord(options) {
         options.path = "getUserTransferRecord";
+        validateParams(options, ["fromUserId", "toUserId", "coinId", "orderId", "amount"]);
         this.apiInstance._post(options);
     }
 
-    getTransferRecordList(options) {
-        validateParams(options, ["fromUserId", "toUserId"]);
+    getUserTransferRecordList(options) {
         options.path = "getUserTransferRecordList";
+        validateParams(options, ["fromUserId", "toUserId"]);
+        this.apiInstance._post(options);
+    }
+    
+    createUserSwapOrder(options) {
+        options.path = "userSwap";
+        validateParams(options, ["orderId", "userId", "coinIdIn", "amountIn", "coinIdOut"]);
+        this.apiInstance._post(options);
+    }
+    
+    getUserSwapRecord(options) {
+        options.path = "getUserSwapRecord";
+        this.apiInstance._post(options);
+    }
+    
+    getUserSwapRecordList(options) {
+        options.path = "getUserSwapRecordList";
         this.apiInstance._post(options);
     }
 }
