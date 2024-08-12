@@ -113,8 +113,8 @@ const { payment, wallet, withdrawal, resources } = v1;
 const { common, merchant, walletSystem } = v2;
 
 // or legacy
-Libs.CCPayment.setAppId();
-Libs.CCPayment.setAppSecret();
+Libs.CCPayment.setAppId("yourAppIdAbc123");
+Libs.CCPayment.setAppSecret("abcdef01234567901");
 Libs.CCPayment.v1.classes.someMethod();
 Libs.CCPayment.v2.classes.someMethod();
 ```
@@ -153,16 +153,16 @@ _Reference: **[Hosted checkout page integration](https://doc.ccpayment.com/ccpay
 
 ```js
 payment.createHostedInvoice({
-    body: {
-        product_name: "Some product name #123",
-        product_price: "1",
-        merchant_order_id: "order_id_123",
-        // order_valid_period: 3600,
-        // return_url: "https://example.com/",
-        // notify_url: "https://notice.example.com",
-        // custom_value: "some_custom_value"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    product_name: "Some product name #123",
+    product_price: "1",
+    merchant_order_id: "some_order_id_123",
+    // order_valid_period: 3600,
+    // return_url: "https://example.com/",
+    // notify_url: "https://notice.example.com",
+    // custom_value: "some_custom_value"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -184,17 +184,17 @@ _Reference: **[Native checkout integration](https://doc.ccpayment.com/ccpayment-
 
 ```js
 payment.createNativeInvoice({
-    body: {
-      token_id: "0912e09a-d8e2-41d7-a0bc-a25530892988",
-      product_price: "1",
-      merchant_order_id: "order_id_123",
-      denominated_currency: "USD",
-      // remark: "some_remark",
-      // order_valid_period: 3600
-      // notify_url: "https://notice.example.com",
-      // custom_value: "some_custom_value"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    token_id: "0912e09a-d8e2-41d7-a0bc-a25530892988",
+    product_price: "1",
+    merchant_order_id: "some_order_id_123",
+    denominated_currency: "USD",
+    // remark: "some_remark",
+    // order_valid_period: 3600
+    // notify_url: "https://notice.example.com",
+    // custom_value: "some_custom_value"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -209,10 +209,10 @@ _Reference: **[Deposit order information](https://doc.ccpayment.com/ccpayment-v1
 
 ```js
 payment.getInvoiceDetail({
-    body: {
-      merchant_order_ids: ["order_id_123", "order_id_456"]
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    merchant_order_ids: ["some_order_id_123", "some_order_id_456"]
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -231,12 +231,12 @@ _Reference: **[Get permanent deposit address](https://doc.ccpayment.com/ccpaymen
 
 ```js
 wallet.createPermanentAddress({
-    body: {
-      user_id: "some_unique_user_id_123",
-      chain: "some_chain_name",
-      // notify_url: "https://notice.example.com"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    user_id: "some_unique_user_id_123",
+    chain: "some_chain_name",
+    // notify_url: "https://notice.example.com"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -258,15 +258,15 @@ _Reference: **[Create a withdrawal order](https://doc.ccpayment.com/ccpayment-v1
 
 ```js
 withdrawal.createWithdrawal ({
-    body: {
-      merchant_order_id: "some_order_id_123",
-      address: "0xSomeWalletAddress",
-      token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298",
-      value: "1",
-      // memo: "some_address_memo",
-      // merchant_pays_fee: false
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    merchant_order_id: "some_order_id_123",
+    address: "0xSomeWalletAddress",
+    token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298",
+    value: "1",
+    // memo: "some_address_memo",
+    // merchant_pays_fee: false
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -281,10 +281,10 @@ _Reference: **[Withdrawal order information](https://doc.ccpayment.com/ccpayment
 
 ```js
 withdrawal.getWithdrawalDetail({
-    body: {
-      merchant_order_ids: ["order_id_123", "order_id_456"]
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    merchant_order_ids: ["order_id_123", "order_id_456"]
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -297,12 +297,12 @@ _Reference: **[Token ID interface](https://doc.ccpayment.com/ccpayment-v1.0-api/
 
 |Name|Required|Type|
 |----|--------|----|
-|No parameter required|
+|No parameter required|-|-|
 
 ```js
 resources.getSupportedCoins({
-    // no parameter required
-    onSuccess: "some_on_success_cmd"
+  // no parameter required
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -318,11 +318,11 @@ _Reference: **[Current token rate interface](https://doc.ccpayment.com/ccpayment
 
 ```js
 resources.calculateTokenRate({
-    body: {
-      amount: "1",
-      token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    amount: "1",
+    token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -337,10 +337,10 @@ _Reference: **[Asset balance interface](https://doc.ccpayment.com/ccpayment-v1.0
 
 ```js
 resources.getBalance({
-    body: {
-      // coin_id: "8e5741cf-6e51-4892-9d04-3d40e1dd0128"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // coin_id: "8e5741cf-6e51-4892-9d04-3d40e1dd0128"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -356,11 +356,11 @@ _Reference: **[Network fee interface](https://doc.ccpayment.com/ccpayment-v1.0-a
 
 ```js
 resources.getNetworkFee({
-    body: {
-      token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298",
-      // address: "0xSomeWalletAddress"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    token_id: "0912e09a-d8e2-41d7-a0bc-a2553089298",
+    // address: "0xSomeWalletAddress"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -371,12 +371,12 @@ _Reference: **[Block height information retrieval](https://doc.ccpayment.com/ccp
 
 |Name|Required|Type|
 |----|--------|----|
-|No parameter required|
+|No parameter required|-|-|
 
 ```js
 resources.getBlockHeight({
-    // no parameter required
-    onSuccess: "some_on_success_cmd"
+  // no parameter required
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -391,10 +391,10 @@ _Reference: **[Check CWallet validity](https://doc.ccpayment.com/ccpayment-v1.0-
 
 ```js
 resources.validateCWalletId({
-    body: {
-      c_id: "9454818"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    c_id: "9454818"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -406,83 +406,124 @@ Official documentation: https://ccpayment.com/api/doc?en#introduction
 
 #### 1. getTokenList
 
+_Reference: **[Get token list](https://ccpayment.com/api/doc?en#get-token-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|No parameter required|-|-|
+
 ```js
 common.getTokenList({
-    // no parameter required
-    onSuccess: "some_on_success_cmd"
+  // no parameter required
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 2. getTokenInformation
 
+_Reference: **[Get token information](https://ccpayment.com/api/doc?en#get-token-information)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+
 ```js
 common.getTokenInformation({
-    body: {
-      coinId: 1280
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 3. getTokenPrice
 
+_Reference: **[Get token price](https://ccpayment.com/api/doc?en#get-token-price)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinIds`|Yes|`integer[]`|
+
 ```js
 common.getTokenPrice({
-    body: {
-      coinIds: [1280, 1234]
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinIds: [1280, 1234]
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 4. getCWalletUserInfo
 
-_Reference: **[]()**_
+_Reference: **[Get CWallet user information](https://ccpayment.com/api/doc?en#get-cwallet-user-information)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`cwalletUserId`|Yes|`string`|
 
 ```js
 common.getCWalletUserInfo({
-    body: {
-      cwalletUserId: "9558861"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    cwalletUserId: "9558861"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 5. getWithdrawFee
 
+_Reference: **[Get withdrawal network fee](https://ccpayment.com/api/doc?en#get-withdrawal-network-fee)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`chain`|Yes|`string`|
+
 ```js
 common.getWithdrawFee({
-    body: {
-      coinId: 1280,
-      chain: "POLYGON"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    chain: "POLYGON"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 6. getFiatList
 
+_Reference: **[Get fiat list](https://ccpayment.com/api/doc?en#get-fiat-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|No parameter required|-|-|
+
 ```js
 common.getFiatList({
-    // no parameter required
-    onSuccess: "some_on_success_cmd"
+  // no parameter required
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 7. getChainList
 
+_Reference: **[Get chain list](https://ccpayment.com/api/doc?en#get-chain-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`chains`|No|`string[]`|
+
 ```js
 common.getChainList({
-    body: {
-      chains: ["ETH", "POLYGON", "BSC"]
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // chains: ["ETH", "POLYGON", "BSC"]
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -491,222 +532,355 @@ common.getChainList({
 
 #### 1. getBalanceList
 
+_Reference: **[Get balance list](https://ccpayment.com/api/doc?en#get-balance-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|No parameter required|-|-|
+
 ```js
 merchant.getBalanceList({
-    // no parameter required
-    onSuccess: "some_on_success_cmd"
+  // no parameter required
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 2. getCoinBalance
 
+_Reference: **[Get coin balance](https://ccpayment.com/api/doc?en#get-coin-balance)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+
 ```js
 merchant.getCoinBalance({
-    body: {
-      coinId: 1280
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 3. createInvoice
 
+_Reference: **[Create deposit address for order](https://ccpayment.com/api/doc?en#create-deposit-address-for-order)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`price`|Yes|`string`|
+|`chain`|Yes|`string`|
+|`orderId`|Yes|`string`|
+|`fiatId`|No|`integer`|
+|`expiredAt`|No|`integer`|
+|`buyerEmail`|No|`string`|
+|`generateCheckoutURL`|No|`boolean`|
+|`product`|No|`string`|
+|`returnUrl`|No|`string`|
+
 ```js
 merchant.createInvoice({
-    body: {
-      coinId: 1280,
-      price: "1",
-      chain: "POLYGON",
-      orderId: "some_order_id_123",
-      // fiatId: 123,
-      // expiredAt: Math.floor(Date.now() / 1000) + 3600,
-      // buyerEmail: "someone@gmail.com",
-      // generateCheckoutURL: false,
-      // product: "some_product_name",
-      // returnUrl: "https://example.com"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    price: "1",
+    chain: "POLYGON",
+    orderId: "some_order_id_123",
+    // fiatId: 123,
+    // expiredAt: Math.floor(Date.now() / 1000) + 3600,
+    // buyerEmail: "someone@gmail.com",
+    // generateCheckoutURL: false,
+    // product: "some_product_name",
+    // returnUrl: "https://example.com"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 4. getInvoiceDetail
 
+_Reference: **[Get order information](https://ccpayment.com/api/doc?en#get-order-information)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`orderId`|Yes|`string`|
+
 ```js
 merchant.getInvoiceDetail({
-    body: {
-      orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 5. createPermanentAddress
 
+_Reference: **[Get permanent deposit address](https://ccpayment.com/api/doc?en#get-permanent-deposit-address)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`referenceId`|Yes|`string`|
+
 ```js
 merchant.createPermanentAddress({
-    body: {
-      referenceId: "some_reference_id",
-      chain: "POLYGON"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    referenceId: "some_reference_id",
+    chain: "POLYGON"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 6. getDepositRecord
 
+_Reference: **[Get deposit record](https://ccpayment.com/api/doc?en#get-deposit-record)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|Yes|`string`|
+
 ```js
 merchant.getDepositRecord({
-    body: {
-      recordId: "some_record_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    recordId: "some_record_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 7. getDepositRecordList
 
+_Reference: **[Get deposit record list](https://ccpayment.com/api/doc?en#get-deposit-record-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|No|`integer`|
+|`referenceId`|No|`string`|
+|`orderId`|No|`string`|
+|`chain`|No|`string`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 merchant.getDepositRecordList({
-    body: {
-      // coinId: 1280,
-      // referenceId: "some_reference_id",
-      // orderId: "some_order_id_123",
-      // chain: "POLYGON",
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // coinId: 1280,
+    // referenceId: "some_reference_id",
+    // orderId: "some_order_id_123",
+    // chain: "POLYGON",
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 8. externalWithdraw
 
+_Reference: **[Create network withdrawal order](https://ccpayment.com/api/doc?en#create-network-withdrawal-order)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`chain`|Yes|`string`|
+|`address`|Yes|`string`|
+|`orderId`|Yes|`string`|
+|`amount`|Yes|`string`|
+|`memo`|No|`string`|
+|`merchantPayNetworkFee`|No|`boolean`|
+
 ```js
 merchant.externalWithdraw({
-    body: {
-      coinId: 1280,
-      chain: "POLYGON",
-      address: "0xSomeWalletAddress",
-      orderId: "some_order_id_123",
-      amount: "1",
-      // memo: "some_address_memo",
-      // merchantPayNetworkFee: false
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    chain: "POLYGON",
+    address: "0xSomeWalletAddress",
+    orderId: "some_order_id_123",
+    amount: "1",
+    // memo: "some_address_memo",
+    // merchantPayNetworkFee: false
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 9. internalWithdraw
 
+_Reference: **[Withdraw to CWallet Account](https://ccpayment.com/api/doc?en#withdrawal-to-cwallet-account)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`cwalletUser`|Yes|`string`|
+|`amount`|Yes|`string`|
+|`orderId`|Yes|`string`|
+
 ```js
 merchant.internalWithdraw({
-    body: {
-      coinId: 1280,
-      cwalletUser: "9558861",
-      amount: "1",
-      orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    cwalletUser: "9558861",
+    amount: "1",
+    orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 10. getWithdrawalRecord
 
+_Reference: **[Get withdrawal record](https://ccpayment.com/api/doc?en#get-withdrawal-record)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|No|`string`|
+|`orderId`|No|`string`|
+
 ```js
 merchant.getWithdrawalRecord({
-    body: {
-      // recordId: "some_record_id_123",
-      // orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordId: "some_record_id_123",
+    // orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 11. getWithdrawalRecordList
 
+_Reference: **[Get withdrawal record list](https://ccpayment.com/api/doc?en#get-withdrawal-record-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|No|`integer`|
+|`orderIds`|No|`string[]`|
+|`chain`|No|`string`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 merchant.getWithdrawalRecordList({
-    body: {
-      // coinId: 1280,
-      // orderIds: ["some_order_id_123", "some_order_id_456"],
-      // chain: "POLYGON",
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // coinId: 1280,
+    // orderIds: ["some_order_id_123", "some_order_id_456"],
+    // chain: "POLYGON",
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 12. getSwapQuote
 
+_Reference: **[Get swap quote](https://ccpayment.com/api/doc?en#swap-price)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinIdIn`|Yes|`integer`|
+|`amountIn`|Yes|`string`|
+|`coinIdOut`|Yes|`integer`|
+
 ```js
 merchant.getSwapQuote({
-    body: {
-      coinIdIn: 1280,
-      amountIn: "100",
-      coinIdOut: 1329
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinIdIn: 1280,
+    amountIn: "100",
+    coinIdOut: 1329
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 13. createSwapOrder
 
+_Reference: **[Create swap order](https://ccpayment.com/api/doc?en#swap-order-create)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`orderId`|Yes|`string`|
+|`coinIdIn`|Yes|`integer`|
+|`amountIn`|Yes|`string`|
+|`coinIdOut`|Yes|`integer`|
+|`amountOutMinimum`|No|`string`|
+
 ```js
 merchant.createSwapOrder({
-    body: {
-      orderId: "some_order_id_123",
-      coinIdIn: 1280,
-      amountIn: "100",
-      coinIdOut: 1329,
-      // amountOutMinimum: ""
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    orderId: "some_order_id_123",
+    coinIdIn: 1280,
+    amountIn: "100",
+    coinIdOut: 1329,
+    // amountOutMinimum: ""
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 14. getSwapRecord
 
+_Reference: **[Get swap record](https://ccpayment.com/api/doc?en#swap-record)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|No|`string`|
+|`orderId`|No|`string`|
+
 ```js
 merchant.getSwapRecord({
-    body: {
-      // recordId: "some_record_id_123",
-      // orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordId: "some_record_id_123",
+    // orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 15. getSwapRecordList
 
+_Reference: **[Get swap record list](https://ccpayment.com/api/doc?en#swap-record-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordIds`|No|`string[]`|
+|`orderIds`|No|`string[]`|
+|`coinIdIn`|No|`integer`|
+|`coinIdOut`|No|`integer`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 merchant.getSwapRecordList({
-    body: {
-      // recordIds: ["some_record_id_123", ["some_record_id_456"],
-      // orderIds: ["some_order_id_123", "some_order_id_456"],
-      // coinIdIn: 1280,
-      // coinIdOut: 1329,
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordIds: ["some_record_id_123", ["some_record_id_456"],
+    // orderIds: ["some_order_id_123", "some_order_id_456"],
+    // coinIdIn: 1280,
+    // coinIdOut: 1329,
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
@@ -715,229 +889,369 @@ merchant.getSwapRecordList({
 
 #### 1. getUserBalanceList
 
+_Reference: **[Get user balance list](https://ccpayment.com/api/doc?en#get-a-list-of-user-assets)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`userId`|Yes|`string`|
+
 ```js
 walletSystem.getUserBalanceList({
-    body: {
-      userId: "user_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    userId: "user_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 2. getUserBalance
 
+_Reference: **[Get coin balance of users](https://ccpayment.com/api/doc?en#acquisition-of-user-token-assets)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`userId`|Yes|`string`|
+|`coinId`|Yes|`integer`|
+
 ```js
 walletSystem.getUserBalance({
-    body: {
-      userId: "user_id_123",
-      coinId: 1280
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    userId: "user_id_123",
+    coinId: 1280
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 3. getUserDepositAddress
 
+_Reference: **[Get user deposit address](https://ccpayment.com/api/doc?en#get-or-create-a-user-address)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`userId`|Yes|`string`|
+|`chain`|Yes|`string`|
+
 ```js
 walletSystem.getUserDepositAddress({
-    body: {
-      userId: "user_id_123",
-      chain: "POLYGON"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    userId: "user_id_123",
+    chain: "POLYGON"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 4. getUserDepositRecord
 
+_Reference: **[Get user deposit record](https://ccpayment.com/api/doc?en#get-user-recharge-records)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|Yes|`string`|
+
 ```js
 walletSystem.getUserDepositRecord({
-    body: {
-      recordId: "some_record_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    recordId: "some_record_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 5. getUserDepositRecordList
 
+_Reference: **[Get user deposit record list](https://ccpayment.com/api/doc?en#get-user-recharge-history)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`userId`|Yes|`string`|
+|`coinId`|No|`integer`|
+|`chain`|No|`string`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 walletSystem.getUserDepositRecordList({
-    body: {
-      // coinId: 1280,
-      // userId: "user_id_123",
-      // chain: "POLYGON",
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },,
-    onSuccess: "some_on_success_cmd"
+  body: {
+    userId: "user_id_123",
+    // coinId: 1280,
+    // chain: "POLYGON",
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 6. externalUserWithdraw
 
+_Reference: **[Withdraw to blockchain address](https://ccpayment.com/api/doc?en#user-withdrawals-to-blockchain)**_ 
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`userId`|Yes|`string`|
+|`chain`|Yes|`string`|
+|`address`|Yes|`string`|
+|`orderId`|Yes|`string`|
+|`amount`|Yes|`string`|
+|`memo`|No|`string`|
+
+
 ```js
 walletSystem.externalUserWithdraw({
-    body: {
-      coinId: 1280,
-      userId: "user_id_123",
-      chain: "POLYGON",
-      address: "0xSomeWalletAddress",
-      orderId: "some_order_id_123",
-      amount: "1",
-      // memo: "some_address_memo"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    userId: "user_id_123",
+    chain: "POLYGON",
+    address: "0xSomeWalletAddress",
+    orderId: "some_order_id_123",
+    amount: "1",
+    // memo: "some_address_memo"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 7. internalUserWithdraw
 
+_Reference: **[Withdraw to CWallet Account](https://ccpayment.com/api/doc?en#user-withdrawals-to-cwallet-account)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`coinId`|Yes|`integer`|
+|`userId`|Yes|`string`|
+|`cwalletUser`|Yes|`string`|
+|`amount`|Yes|`string`|
+|`orderId`|Yes|`string`|
+
 ```js
 walletSystem.internalUserWithdraw({
-    body: {
-      coinId: 1280,
-      userId: "user_id_123",
-      cwalletUser: "9558861",
-      amount: "1",
-      orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    coinId: 1280,
+    userId: "user_id_123",
+    cwalletUser: "9558861",
+    amount: "1",
+    orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 8. getUserWithdrawalRecord
 
+_Reference: **[Get user withdrawal record](https://ccpayment.com/api/doc?en#get-user-withdrawal-records)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|No|`string`|
+|`orderId`|No|`string`|
+
 ```js
 walletSystem.getUserWithdrawalRecord({
-    body: {
-      // recordId: "some_record_id_123",
-      // orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordId: "some_record_id_123",
+    // orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 9. getUserWithdrawalRecordList
 
+_Reference: **[Get user withdrawal record list](https://ccpayment.com/api/doc?en#get-user-withdrawal-history)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`userId`|Yes|`string`|
+|`coinId`|No|`integer`|
+|`toAddress`|No|`string`|
+|`chain`|No|`string`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 walletSystem.getUserWithdrawalRecordList({
-    body: {
-      userId: "user_id_123",
-      // coinId: 1280,
-      // toAddress: "0xSomeWalletAddress",
-      // chain: "POLYGON",
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    userId: "user_id_123",
+    // coinId: 1280,
+    // toAddress: "0xSomeWalletAddress",
+    // chain: "POLYGON",
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 10. internalUserTransfer
 
+_Reference: **[Create an internal transaction](https://ccpayment.com/api/doc?en#initiate-user-transfers)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`fromUserId`|Yes|`string`|
+|`toUserId`|Yes|`string`|
+|`coinId`|Yes|`integer`|
+|`amount`|Yes|`string`|
+|`orderId`|Yes|`string`|
+|`remark`|No|`string`|
+
 ```js
 walletSystem.internalUserTransfer({
-    body: {
-      fromUserId: "user_id_123",
-      toUserId: "user_id_456",
-      coinId: 1280,
-      amount: "1",
-      orderId: "some_order_id_123",
-      // remark: "some_remark"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    fromUserId: "user_id_123",
+    toUserId: "user_id_456",
+    coinId: 1280,
+    amount: "1",
+    orderId: "some_order_id_123",
+    // remark: "some_remark"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 11. getUserTransferRecord
 
+_Reference: **[Get user internal transaction record](https://ccpayment.com/api/doc?en#get-user-transfer-records)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|No|`string`|
+|`orderId`|No|`string`|
+
 ```js
 walletSystem.getUserTransferRecord({
-    body: {
-      // recordId: "record_id_123",
-      // orderId: "order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordId: "record_id_123",
+    // orderId: "order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 12. getUserTransferRecordList
 
+_Reference: **[Get user internal transaction record list](https://ccpayment.com/api/doc?en#get-user-transfer-history)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`fromUserId`|Yes|`string`|
+|`toUserId`|Yes|`string`|
+|`coinId`|No|`integer`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 walletSystem.getUserTransferRecordList({
-    body: {
-      fromUserId: "user_id_123",
-      toUserId: "user_id_456",
-      // coinId: 1280,
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    fromUserId: "user_id_123",
+    toUserId: "user_id_456",
+    // coinId: 1280,
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 13. createUserSwapOrder
 
+_Reference: **[Create user swap order](https://ccpayment.com/api/doc?en#user-swap-order-create)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`orderId`|Yes|`string`|
+|`userId`|Yes|`string`|
+|`coinIdIn`|Yes|`integer`|
+|`amountIn`|Yes|`string`|
+|`coinIdOut`|Yes|`integer`|
+|`extraFeeRate`|No|`string`|
+|`amountOutMinimum`|No|`string`|
+
 ```js
 walletSystem.createUserSwapOrder({
-    body: {
-      orderId: "some_order_id_123",
-      userId: "user_id_123",
-      coinIdIn: 1280,
-      amountIn: "100",
-      coinIdOut: 1329,
-      // extraFeeRate: "",
-      // amountOutMinimum: ""
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    orderId: "some_order_id_123",
+    userId: "user_id_123",
+    coinIdIn: 1280,
+    amountIn: "100",
+    coinIdOut: 1329,
+    // extraFeeRate: "",
+    // amountOutMinimum: ""
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 14. getUserSwapRecord
 
+_Reference: **[Get user swap record](https://ccpayment.com/api/doc?en#user-swap-record)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordId`|No|`string`|
+|`orderId`|No|`string`|
+
 ```js
 walletSystem.getUserSwapRecord({
-    body: {
-      // recordId: "some_record_id_123",
-      // orderId: "some_order_id_123"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordId: "some_record_id_123",
+    // orderId: "some_order_id_123"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
 
 #### 15. getUserSwapRecordList
 
+_Reference: **[Get user swap record list](https://ccpayment.com/api/doc?en#user-swap-record-list)**_
+
+|Name|Required|Type|
+|----|--------|----|
+|`recordIds`|No|`string[]`|
+|`orderIds`|No|`string[]`|
+|`userId`|No|`string`|
+|`coinIdIn`|No|`integer`|
+|`coinIdOut`|No|`integer`|
+|`startAt`|No|`integer`|
+|`endAt`|No|`integer`|
+|`nextId`|No|`string`|
+
 ```js
 walletSystem.getUserSwapRecordList({
-    body: {
-      // recordIds: ["some_record_id_123", ["some_record_id_456"],
-      // orderIds: ["some_order_id_123", "some_order_id_456"],
-      // userId: "some_user_id_123",
-      // coinIdIn: 1280,
-      // coinIdOut: 1329,
-      // startAt: 1721297348,
-      // endAt: 1721300968,
-      // nextId: "some_next_id"
-    },
-    onSuccess: "some_on_success_cmd"
+  body: {
+    // recordIds: ["some_record_id_123", ["some_record_id_456"],
+    // orderIds: ["some_order_id_123", "some_order_id_456"],
+    // userId: "some_user_id_123",
+    // coinIdIn: 1280,
+    // coinIdOut: 1329,
+    // startAt: 1721297348,
+    // endAt: 1721300968,
+    // nextId: "some_next_id"
+  },
+  onSuccess: "some_on_success_cmd"
 });
 ```
 [Back](#documentation--flow)
