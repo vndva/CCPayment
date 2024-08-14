@@ -385,6 +385,8 @@ class V2WalletSystemAPI {
 }
 
 publish({
+    apiCall: apiCall,
+    createTimestamp: createTimestamp,
     setAppId: setAppId,
     getAppId: getAppId,
     setAppSecret: setAppSecret,
